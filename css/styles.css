@@ -1,0 +1,78 @@
+/*!
+ * Simulación de procesos de fabricación de zapatos.
+ * Copyright 2020. Luis Guillermo Gómez Galeano
+ * Todos los derechos reservados.
+ */
+
+body {
+    background: #fff;
+    color: #2f3138;
+    font-family: "Open Sans", sans-serif;
+}
+
+a {
+    color: #f82249;
+    transition: 0.5s;
+}
+
+a:hover, a:active, a:focus {
+    color: #f8234a;
+    outline: none;
+    text-decoration: none;
+}
+
+p {
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    padding: 0;
+    color: #0e1b4d;
+}
+
+.bg-main-title {
+    background: rgba(6, 12, 34, 0.98);
+}
+
+.main-title {
+    color: #f8234a;
+    font-weight: bold;
+}
+
+.btn-custom-primary {
+    color: #f82249;;
+    background: none;
+    padding: 7px 22px;
+    border-radius: 50px;
+    border: 2px solid #f82249;
+    transition: all ease-in-out 0.3s;
+    font-weight: 500;
+    margin-left: 8px;
+    margin-top: 2px;
+    line-height: 1;
+    font-size: 14px;
+}
+
+.btn-custom-primary:hover {
+    background: #f82249;
+    color: #fff;
+}
+
+#simulation_process .card {
+    margin-bottom: 30px;
+}
+
+#simulation_process img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Footer */
+.site-footer {
+    background: #101522;
+}

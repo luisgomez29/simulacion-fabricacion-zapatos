@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Simulación Fabricación de Zapatos</title>
+</head>
+<body>
+
+<header class="bg-main-title py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center main-title">Simulación Fabricación de Zapatos</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container my-5">
+        <section id="simulation_data" class="mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center mb-4">Ingrese los datos a simular</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                    <div class="card card-body">
+                        <form method="post" id="simulationForm">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cantidadproduction">Cantidad de producción</label>
+                                        <input type="number" class="form-control" id="cantidadproduction"
+                                               name="cantidadproduction" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="shoeType">Tipo de zapato</label>
+                                        <select class="form-control" id="shoeType" name="shoeType" required>
+                                            <option value="Zapato informal">Zapato informal</option>
+                                            <option value="Zapato deportivo">Zapato deportivo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="unitPrice">Precio unitario de venta</label>
+                                        <input type="number" class="form-control" id="unitPrice" name="unitPrice"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="warehouse">Número de bodega (almacenar)</label>
+                                        <input type="number" class="form-control" id="warehouse" name="warehouse"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Materiales</h5>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="alert alert-success" role="alert">
+                                        <h6 class="alert-heading text-center font-weight-bold">Cantidad inicial</h6>
+                                        <div class="d-flex">
+                                            <div class="w-50">
+                                                <p class="m-0">Cuero: <strong>120</strong></p>
+                                                <p class="m-0">Tela: <strong>215</strong></p>
+                                            </div>
+                                            <div class="w-50">
+                                                <p class="m-0">Suela: <strong>304</strong></p>
+                                                <p class="m-0">Nailon y poliéster: <strong>96</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="cuero" name="cuero">
+                                            <label class="form-check-label" for="cuero">Cuero</label>
+                                        </div>
+                                        <label for="cantidadCuero">Cantidad</label>
+                                        <input type="number" class="form-control" id="cantidadCuero"
+                                               name="cantidadCuero">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="tela" name="tela">
+                                            <label class="form-check-label" for="tela">Tela</label>
+                                        </div>
+                                        <label for="cantidadTela">Cantidad</label>
+                                        <input type="number" class="form-control" id="cantidadTela" name="cantidadTela">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="suela" name="suela">
+                                            <label class="form-check-label" for="suela">Suela</label>
+                                        </div>
+                                        <label for="cantidadSuela">Cantidad</label>
+                                        <input type="number" class="form-control" id="cantidadSuela"
+                                               name="cantidadSuela">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="nylon" name="nylon">
+                                            <label class="form-check-label" for="nylon">Nailon y poliéster</label>
+                                        </div>
+                                        <label for="cantidadNylon">Cantidad</label>
+                                        <input type="number" class="form-control" id="cantidadNylon"
+                                               name="cantidadNylon">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-custom-primary mt-4 mx-auto d-block">
+                                Iniciar simulación
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="simulation_process" class="mb-5">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center mb-4">Lista de procesos</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="checkMaterialQuantity">
+                    <div class="card">
+                        <img src="img/verificar_existencias.png" class="card-img-top"
+                             alt="Verificando cantidad de material">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Verificando cantidad de material</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="provideMaterials">
+                    <div class="card">
+                        <img src="img/agregar_materiales.jpg" class="card-img-top"
+                             alt="Suministrando material faltante">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Suministrando y verificando material faltante</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="addMaterials">
+                    <div class="card">
+                        <img src="img/agregar_materiales_1.jpg" class="card-img-top" alt="Agregando materiales">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Procesando materiales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="cutMaterials">
+                    <div class="card">
+                        <img src="img/cortar_material.jpg" class="card-img-top" alt="Cortando Materiales">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Cortando Materiales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="assemblyMaterials">
+                    <div class="card">
+                        <img src="img/montado_material.jpg" class="card-img-top" alt="Montado de materiales">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Montado de materiales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="bondingMaterials">
+                    <div class="card">
+                        <img src="img/pegado_material.jpg" class="card-img-top" alt="Pegando materiales">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Pegando materiales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="checkQuality">
+                    <div class="card">
+                        <img src="img/revision_calidad.png" class="card-img-top" alt="Revisión de calidad">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Revisión de calidad</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="repairShoes">
+                    <div class="card">
+                        <img src="img/reparacion.png" class="card-img-top" alt="Reparación">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Reparación, verificando...</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="revitalizeMaterials">
+                    <div class="card">
+                        <img src="img/revitalizar_zapato.jpg" class="card-img-top" alt="Revitalizar materiales">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Revitalizando materiales</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="packShoes">
+                    <div class="card">
+                        <img src="img/empacar_zapato.jpg" class="card-img-top" alt="Empacando zapatos">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Empacando zapatos</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="setPrice">
+                    <div class="card">
+                        <img src="img/definir_precio.jpg" class="card-img-top"
+                             alt="Definiendo precio unitario de venta">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Definiendo precio unitario de venta</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-none" id="setWarehouseNumber">
+                    <div class="card">
+                        <img src="img/bodega_zapatos.jpg" class="card-img-top" alt="Almacenando en bodega">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Almacenando en bodega</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="simulation_summary" class="d-none">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center mb-4">Resultados</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="img/zapatos.jpg" class="card-img" alt="Total producción">
+                            </div>
+                            <div class="col-md-8" id="simulation_summary_ifo">
+                                <div class="card-body">
+                                    <p class="card-text" id="totalProduction"></p>
+                                    <p class="card-text" id="shoeTypeFinal"></p>
+                                    <p class="card-text" id="unitPriceFinal"></p>
+                                    <p class="card-text" id="warehouseNumber"></p>
+                                    <p class="card-text" id="simulationTime"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-custom-primary mt-5 mx-auto d-block" id="btnResetSimulation">
+                        Volver a
+                        simular
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<footer class="site-footer text-white pb-3 pt-5">
+    <div class="bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 text-lg-left text-center">
+                    <p class="copyright-text">
+                        © 2020 <strong>Simulación de procesos de fabricación de zapatos</strong>. Todos los derechos
+                        reservados.
+                    </p>
+                    <div class="credits mb-4">
+                        Diseñado por <a href="mailto:luis.gomez@usantoto.edu.co">Luis Guillermo Gómez Galeano</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xs-12 text-lg-right text-center">
+                    <h5 class="font-weight-bold text-white">Universidad Santo Tomas - Tunja</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/src/materials.js"></script>
+<script src="js/src/main.js"></script>
+</body>
+</html>
