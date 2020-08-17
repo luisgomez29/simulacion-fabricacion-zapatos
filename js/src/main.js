@@ -43,18 +43,17 @@ const main = async fields => {
         await bondingMaterials();
 
         // Verificar estado de calidad
-        let qStatus = await checkQuality(qualityStatus)
-        if (!qStatus) {
-            qStatus = await repairShoes(qualityStatus)
+        let qualityStatus = await checkQuality(Math.round(Math.random()))
+        if (!qualityStatus) {
+            qualityStatus = await repairShoes(qualityStatus)
         }
 
-        if (qStatus) {
+        if (qualityStatus) {
             await revitalizeMaterials()
             await packShoes()
             await setPrice()
             await setWarehouse()
         }
-
     }
 }
 

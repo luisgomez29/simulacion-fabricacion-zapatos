@@ -22,13 +22,6 @@ const availableMaterials = [
 const time = 1000
 
 /**
- * Estado de la calidad que puede ser 0 o 1.
- * @type {number}
- */
-let qualityStatus = Math.round(Math.random())
-
-
-/**
  * Convierte a mayúsculas el primer carácter de una cadena.
  *
  * @param {string} string Cadena de texto a convertir.
@@ -63,7 +56,7 @@ const sleep = (milliseconds) => {
  */
 const getMaterials = fields => {
     let materials = ["cuero", "tela", "suela", "nylon"]
-    let materialsObject = [];
+    let materialsObject = []
     let field = null
 
     fields.map(obj => {
@@ -156,8 +149,8 @@ const bondingMaterials = async () => {
  * @returns {Promise<boolean|*>} Estado de la calidad
  */
 const checkQuality = async status => {
-    $('#checkQuality').removeClass('d-none')
     await sleep(time)
+    $('#checkQuality').removeClass('d-none')
     return typeof status === 'number' ? Boolean(status) : status
 }
 
@@ -167,6 +160,7 @@ const checkQuality = async status => {
  * @returns {Promise<boolean|*>} TRUE si los zapatos fueron reparados, FALSE en caso contrario.
  */
 const repairShoes = async status => {
+    await sleep(time)
     $('#repairShoes').removeClass('d-none')
     return checkQuality(!status)
 }

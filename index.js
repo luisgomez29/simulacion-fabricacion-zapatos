@@ -1,1 +1,0 @@
-var es5Source = require("regenerator").compile(es6Source).code;
