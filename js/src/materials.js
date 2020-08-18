@@ -6,9 +6,10 @@
 
 /**
  * Lista de materiales disponibles
- * @type {Object[]}
+ * @default
+ * @constant {Object[]}
  */
-const availableMaterials = [
+const AVAILABLE_MATERIALS = [
     {name: "cuero", quantity: 120},
     {name: "tela", quantity: 215},
     {name: "suela", quantity: 304},
@@ -17,9 +18,10 @@ const availableMaterials = [
 
 /**
  * Tiempo de demora de cada función
- * @type {number}
+ * @default
+ * @constant {number}
  */
-const time = 1000
+const TIME = 1000
 
 /**
  * Convierte a mayúsculas el primer carácter de una cadena.
@@ -78,10 +80,10 @@ const getMaterials = fields => {
 
 const checkMaterialQuantity = async materials => {
     $('#checkMaterialQuantity').removeClass('d-none')
-    await sleep(time)
+    await sleep(TIME)
     let flag = true
     materials.map(mat => {
-        const material = findMaterial(availableMaterials, mat)
+        const material = findMaterial(AVAILABLE_MATERIALS, mat)
         if (mat.quantity > material.quantity) flag = false
     })
     return flag
@@ -96,14 +98,14 @@ const checkMaterialQuantity = async materials => {
  */
 const provideMaterials = async materials => {
     $('#provideMaterials').removeClass('d-none')
-    await sleep(time)
+    await sleep(TIME)
     materials.map(mat => {
-        const material = findMaterial(availableMaterials, mat)
+        const material = findMaterial(AVAILABLE_MATERIALS, mat)
         if (mat.quantity > material.quantity) {
             material.quantity = parseInt(mat.quantity)
         }
     })
-    return checkMaterialQuantity(availableMaterials)
+    return checkMaterialQuantity(AVAILABLE_MATERIALS)
 }
 
 /**
@@ -111,7 +113,7 @@ const provideMaterials = async materials => {
  * @returns {Promise<void>}
  */
 const addMaterials = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#addMaterials').removeClass('d-none')
 }
 
@@ -120,7 +122,7 @@ const addMaterials = async () => {
  * @returns {Promise<void>}
  */
 const cutMaterials = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#cutMaterials').removeClass('d-none')
 }
 
@@ -129,7 +131,7 @@ const cutMaterials = async () => {
  * @returns {Promise<void>}
  */
 const assemblyMaterials = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#assemblyMaterials').removeClass('d-none')
 }
 
@@ -138,7 +140,7 @@ const assemblyMaterials = async () => {
  * @returns {Promise<void>}
  */
 const bondingMaterials = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#bondingMaterials').removeClass('d-none')
 }
 
@@ -148,7 +150,7 @@ const bondingMaterials = async () => {
  * @returns {Promise<boolean|*>} Estado de la calidad
  */
 const checkQuality = async status => {
-    await sleep(time)
+    await sleep(TIME)
     $('#checkQuality').removeClass('d-none')
     return typeof status === 'number' ? Boolean(status) : status
 }
@@ -159,7 +161,7 @@ const checkQuality = async status => {
  * @returns {Promise<boolean|*>} TRUE si los zapatos fueron reparados, FALSE en caso contrario.
  */
 const repairShoes = async status => {
-    await sleep(time)
+    await sleep(TIME)
     $('#repairShoes').removeClass('d-none')
     return checkQuality(!status)
 }
@@ -169,7 +171,7 @@ const repairShoes = async status => {
  * @returns {Promise<void>}
  */
 const revitalizeMaterials = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#revitalizeMaterials').removeClass('d-none')
 }
 
@@ -178,7 +180,7 @@ const revitalizeMaterials = async () => {
  * @returns {Promise<void>}
  */
 const packShoes = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#packShoes').removeClass('d-none')
 }
 
@@ -187,7 +189,7 @@ const packShoes = async () => {
  * @returns {Promise<void>}
  */
 const setPrice = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#setPrice').removeClass('d-none')
 }
 
@@ -196,6 +198,6 @@ const setPrice = async () => {
  * @returns {Promise<void>}
  */
 const setWarehouse = async () => {
-    await sleep(time)
+    await sleep(TIME)
     $('#setWarehouseNumber').removeClass('d-none')
 }
