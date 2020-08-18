@@ -9,6 +9,7 @@ $(document).ready(function () {
         e.preventDefault()
         let startTime = performance.now()
         let fields = $(this).serializeArray()
+        $('#simulation_process').removeClass('d-none')
 
         await main(fields)
 
@@ -22,39 +23,34 @@ $(document).ready(function () {
 });
 
 /**
- *
+ * Función principal
  * @param {Object[]} fields Campos del formulario.
  * @returns {Promise<void>}
  */
 const main = async fields => {
     const materials = getMaterials(fields)
     const verify = await checkMaterialQuantity(materials)
-    let newVerify = false
 
     // verificar cantidad de material
     if (!verify) {
-        newVerify = await provideMaterials(materials)
+        await provideMaterials(materials)
     }
 
-    if (verify || newVerify) {
-        await addMaterials();
-        await cutMaterials();
-        await assemblyMaterials();
-        await bondingMaterials();
+    await addMaterials();
+    await cutMaterials();
+    await assemblyMaterials();
+    await bondingMaterials();
 
-        // Verificar estado de calidad
-        let qualityStatus = await checkQuality(Math.round(Math.random()))
-        if (!qualityStatus) {
-            qualityStatus = await repairShoes(qualityStatus)
-        }
-
-        if (qualityStatus) {
-            await revitalizeMaterials()
-            await packShoes()
-            await setPrice()
-            await setWarehouse()
-        }
+    // Verificar estado de calidad
+    let qualityStatus = await checkQuality(Math.round(Math.random()))
+    if (!qualityStatus) {
+        await repairShoes(qualityStatus)
     }
+
+    await revitalizeMaterials()
+    await packShoes()
+    await setPrice()
+    await setWarehouse()
 }
 
 /**
@@ -80,6 +76,7 @@ const showSummary = (fields, startTime, endTime) => {
  * Vuelve a ejecutar la simulación
  */
 const resetSimulation = () => {
+    $('#simulation_process').addClass('d-none')
     $('#simulation_process .col-12.col-sm-6').addClass('d-none')
     $('#simulation_summary').addClass('d-none')
     $('#simulation_summary_ifo').html(``)

@@ -61,14 +61,13 @@ const getMaterials = fields => {
 
     fields.map(obj => {
         if (materials.includes(obj.name)) field = obj.name
-        if (field !== null && `cantidad${capitalize(field)}` === obj.name) {
+        if (field !== null && `quantity${capitalize(field)}` === obj.name) {
             materialsObject.push({name: field, quantity: obj.value})
             field = null
         }
     });
     return materialsObject
 }
-
 
 /**
  * Verifica la cantidad de material.
@@ -81,7 +80,7 @@ const checkMaterialQuantity = async materials => {
     $('#checkMaterialQuantity').removeClass('d-none')
     await sleep(time)
     let flag = true
-    materials.map((mat, i) => {
+    materials.map(mat => {
         const material = findMaterial(availableMaterials, mat)
         if (mat.quantity > material.quantity) flag = false
     })

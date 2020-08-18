@@ -72,6 +72,10 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
 }
 
+#simulation_summary_ifo p {
+    margin-bottom: 10px;
+}
+
 /* Footer */
 .site-footer {
     background: #101522;
